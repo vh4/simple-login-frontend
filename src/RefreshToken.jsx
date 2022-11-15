@@ -17,7 +17,7 @@ const RefreshToken = () => {
   
     const refreshToken = async (navigate) => { 
       try {
-        const response = await axios.get("https://ap1-backend.herokuapp.com/api/token");
+        const response = await axios.get("http://localhost:5000/api/token");
         setToken(response.data.accessToken);
         const decoded = jwt_decode(response.data.accessToken);
         setName(decoded.name);
@@ -36,7 +36,7 @@ const RefreshToken = () => {
      axiosJWT.interceptors.request.use(async (config) =>{
         const currentDate = new Date();
         if(expire * 1000 < currentDate.getTime()){
-          const response = await axios.get("https://ap1-backend.herokuapp.com/api/token");
+          const response = await axios.get("http://localhost:5000/api/token");
           config.headers.Authorization = `Bearer ${response.data.accessToken}`;
           setToken(response.data.accessToken);
           const decoded = jwt_decode(response.data.accessToken);
