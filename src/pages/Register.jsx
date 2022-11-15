@@ -24,7 +24,7 @@ const Register =  () => {
             if(validator.isEmpty(name)){ return setNameVal("nama harus diisi");}
             if(validator.isEmpty(email)){ return setEmailVal("email harus diisi");}
 
-            await axios.post("https://ap1-backend.herokuapp.com/api/users", {
+            await axios.post("http://localhost:5000/api/users", {
                 name,
                 email,
                 password,

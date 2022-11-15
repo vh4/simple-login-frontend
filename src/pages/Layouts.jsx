@@ -12,7 +12,7 @@ const Layouts = ({children}) => {
    const HandleLogout = async (e) =>{
     e.preventDefault()
       try {
-          await axios.delete("https://ap1-backend.herokuapp.com/api/logout");
+          await axios.delete("http://localhost:5000/api/logout");
           navigate("/");
       } catch (error) {
         console.log(error)
