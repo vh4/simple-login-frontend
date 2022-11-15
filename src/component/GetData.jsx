@@ -11,7 +11,7 @@ const GetData = () => {
 
         const getData = async () =>{
             try {
-                const response = await axios.get("http://localhost:8000/api/users",{
+                const response = await axios.get("http://localhost:5000/api/users",{
                     headers:{
                       Authorization: `Bearer ${token}`
                     }
@@ -30,7 +30,8 @@ const GetData = () => {
 
     return (
         <div>
-            <table class="table">
+        {isloading && <div>Loading.........</div>}
+            <table className="table">
             <thead>
                 <tr>
                 <th scope="col">#</th>
@@ -38,10 +39,9 @@ const GetData = () => {
                 <th scope="col">Email</th>
                 </tr>
             </thead>
-            {isloading && <div>Loading.........</div>}
             <tbody>
                 {data.map((data, index) =>(
-                 <tr>
+                 <tr key={index + 1}>
                  <th scope="row">{index  + 1}</th>
                  <td>{data.name}</td>
                  <td>{data.email}</td>
